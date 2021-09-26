@@ -1,0 +1,26 @@
+using System;
+
+namespace Task
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           
+
+            int myArray = { 2, 67, 748, 74,8745, 987};
+            int max = -99999;
+            for(int i = 0; i < myArray.length; i++)
+            {
+                If(max < myArray[i])
+                {
+                    max = myArray[i]
+
+                }
+            }
+            Console.WriteLine(max);
+        }
+
+    }
+
+}
