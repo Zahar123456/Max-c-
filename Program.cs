@@ -7,10 +7,27 @@ namespace Tasks
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter string : ");
-            string userInput = Console.ReadLine();
-            RemoveLetters(userInput);
-          
+          List<Enemy> enemies = new List<Enemy>();
+          Berserk bers = new Berserk();
+          Soldier sold  = new Soldier();
+        
+          enemies.Add(bers);
+          enemies.Add(sold);
+
+          for(int i = 0; i < enemies.Count; i++)
+          {
+            enemies[i].Move();
+          }
+        }
+        
+        static int NumberPow(int pow, int number)
+        {   
+            int result = 1;
+            for(int n = 0; n < pow; n++)
+            {
+                result = result * number;
+            }
+            return result;
         }
 
         static void RemoveLetters(string inputString)
@@ -39,10 +56,36 @@ namespace Tasks
             Console.WriteLine("Result:" + result);
         } 
         
-            
+    }       
        
-                           
-        
-    }
+    class Enemy
+    { 
+        public int damage;
+        public string name;
+        public int health;
+
+        public virtual void Move()
+        {
+            Console.WriteLine("Enemy move");
+
+        }
+
+    }   
+    class Berserk : Enemy
+    {
+        override public void Move()
+        {
+            base.Move();
+            Console.WriteLine("Berserk bleeding");
+        }
+
+    } 
+    
+    class Soldier : Enemy
+    {
+        override public void Move(){
+            Console.WriteLine("Soldiers move");
+        }
+    }                
 
 }
