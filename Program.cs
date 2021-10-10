@@ -1,91 +1,55 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace Tasks
+namespace Zahartask
 {
     class Program
     {
         static void Main(string[] args)
         {
-          List<Enemy> enemies = new List<Enemy>();
-          Berserk bers = new Berserk();
-          Soldier sold  = new Soldier();
-        
-          enemies.Add(bers);
-          enemies.Add(sold);
-
-          for(int i = 0; i < enemies.Count; i++)
-          {
-            enemies[i].Move();
-          }
-        }
-        
-        static int NumberPow(int pow, int number)
-        {   
-            int result = 1;
-            for(int n = 0; n < pow; n++)
-            {
-                result = result * number;
-            }
-            return result;
+            Task2();
         }
 
-        static void RemoveLetters(string inputString)
+        static void Task1()
         {
-            List<String> wrongLetters = new List<String>();
-            wrongLetters.Add("o");
-            wrongLetters.Add("i");
-            wrongLetters.Add("u");
-            wrongLetters.Add("a");
-            wrongLetters.Add("e");
-            
-            wrongLetters.Add("O");
-            wrongLetters.Add("I");
-            wrongLetters.Add("U");
-            wrongLetters.Add("A");
-            wrongLetters.Add("E");
+            int[] array = new int[] { 1, 4, -2, 5, 13, 7, 5, 9, 5, 12, 3 };
+            Console.WriteLine("Enter number :");
+            int number = Convert.ToInt32(Console.ReadLine());
 
-            string result = "";
-            for(int i = 0; i < inputString.Length; i++ )
+            Console.WriteLine("Numbers: ");
+            for(int i = 0; i < array.Length; i++)
             {
-                if (!wrongLetters.Contains(inputString[i].ToString()))
+                if(array[i] < number)
                 {
-                    result = result + inputString[i];
+                    Console.WriteLine(array[i] + " ");
                 }
             }
-            Console.WriteLine("Result:" + result);
-        } 
+        }
         
-    }       
-       
-    class Enemy
-    { 
-        public int damage;
-        public string name;
-        public int health;
-
-        public virtual void Move()
+        static void Task2()
         {
-            Console.WriteLine("Enemy move");
+            Console.WriteLine("Введите палиндром");
+            string word = Console.ReadLine();
+            word.Replace(" ", "");
+            int j = word.Length;
+            int error = 0;
+            for(int i = 0; i < word.Length; i++)
+            {
+                j--;
+                if (word[i] != word[j])
+                {
+                    error = 1;
+                }
+            }
+            if(error == 0)
+            {
+                Console.WriteLine("Строка является палиндромом");
+            }
+            else
+            {
+                Console.WriteLine("Строка  не является палиндромом");
+            }
 
         }
-
-    }   
-    class Berserk : Enemy
-    {
-        override public void Move()
-        {
-            base.Move();
-            Console.WriteLine("Berserk bleeding");
-        }
-
-    } 
     
-    class Soldier : Enemy
-    {
-        override public void Move(){
-            Console.WriteLine("Soldiers move");
-        }
-    }                
-
+    }
 }
